@@ -3,20 +3,21 @@ package com.splavs.elapsed;
 import org.junit.Test;
 
 /**
- * Class description goes here.
+ * Few tests to test performance of different operations.
  *
  * @author Vyacheslav Silchenko
  */
+@SuppressWarnings({"MismatchedReadAndWriteOfArray", "UnusedAssignment"})
 @Elapsed
-public class FirstTest {
+public class IntegerTest {
 
-    private static final int MAX_ITERATION = Integer.MAX_VALUE/10;
+    private static final int MAX_ITERATION = Integer.MAX_VALUE / 10;
 
     @Test
     //@Elapsed
     public void should_DivideBy2() {
         for (int i = 0; i < MAX_ITERATION; i++) {
-            int a = 5/2;
+            int a = 5 / 2;
 
         }
     }
@@ -24,8 +25,8 @@ public class FirstTest {
     @Test
     //@Elapsed
     public void should_MultiplyBy0_5() {
-        for (int  i = 0; i < MAX_ITERATION; i++) {
-            int a = (int)(5*0.5);
+        for (int i = 0; i < MAX_ITERATION; i++) {
+            int a = (int) (5 * 0.5);
 
         }
     }
@@ -42,7 +43,7 @@ public class FirstTest {
     @Test
     //@Elapsed
     public void should_MultiplyBy2_BitShift() {
-        for (int  i = 0; i < MAX_ITERATION; i++) {
+        for (int i = 0; i < MAX_ITERATION; i++) {
             int a = 5 << 1;
 
         }
@@ -53,7 +54,7 @@ public class FirstTest {
     public void should_DivideBy2_Array() {
         int[] a = new int[MAX_ITERATION];
         for (int i = 0; i < MAX_ITERATION; i++) {
-            a[i] = i/2;
+            a[i] = i / 2;
         }
     }
 
@@ -62,7 +63,7 @@ public class FirstTest {
     public void should_MultiplyBy0_5_Array() {
         int[] a = new int[MAX_ITERATION];
         for (int i = 0; i < MAX_ITERATION; i++) {
-            a[i] = (int)(5*0.5);
+            a[i] = (int) (5 * 0.5);
         }
     }
 
@@ -71,7 +72,7 @@ public class FirstTest {
     public void should_MultiplyBy2_Array() {
         int[] a = new int[MAX_ITERATION];
         for (int i = 0; i < MAX_ITERATION; i++) {
-            a[i] = 5*2;
+            a[i] = 5 * 2;
         }
     }
 
@@ -83,4 +84,6 @@ public class FirstTest {
             a[i] = i << 1;
         }
     }
+
+
 }

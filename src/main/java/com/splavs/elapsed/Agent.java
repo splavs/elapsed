@@ -1,7 +1,8 @@
 package com.splavs.elapsed;
 
 /**
- * Class description goes here.
+ * Java agent class.
+ * Method transform() will override all method behaviour - add output elapsed execution time.
  *
  * @author Vyacheslav Silchenko
  */
@@ -16,7 +17,7 @@ import java.lang.instrument.IllegalClassFormatException;
 import java.lang.instrument.Instrumentation;
 import java.security.ProtectionDomain;
 
-public class Agent implements ClassFileTransformer {
+class Agent implements ClassFileTransformer {
     public static void premain(String agentArgs, Instrumentation inst) {
         // registers the transformer
         inst.addTransformer(new Agent());
@@ -30,14 +31,12 @@ public class Agent implements ClassFileTransformer {
         try {
             ctClass = pool.makeClass(new ByteArrayInputStream(bytes));
             if (ctClass.hasAnnotation(Elapsed.class)) {
-                CtBehavior[] methods = ctClass.getDeclaredBehaviors();
-                for (int i = 0; i < methods.length; i++) {
-                    CtBehavior method = methods[i];
-                    if (method.isEmpty() == false && method.hasAnnotation(Elapsed.class)) {
+                for (CtBehavior method : ctClass.getDeclaredBehaviors()) {
+                    if (!method.isEmpty() && method.hasAnnotation(Elapsed.class)) {
                         method.addLocalVariable("elapsedTime", CtClass.longType);
                         method.insertBefore("elapsedTime = System.currentTimeMillis();");
                         method.insertAfter("{elapsedTime = System.currentTimeMillis() - elapsedTime;"
-                                + "System.out.println(\"Class " +className+ " Method " +method.getName()+ " Executed in ms: \" + elapsedTime);}");
+                                + "System.out.println(\"Class " + className + " Method " + method.getName() + " Executed in ms: \" + elapsedTime);}");
 
                     }
                 }
