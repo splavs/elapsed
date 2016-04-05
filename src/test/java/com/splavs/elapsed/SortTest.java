@@ -17,6 +17,8 @@ public class SortTest {
     private static final int N = 10000000;
     private static int[] TEST_DATA = new int[N];
 
+    private static long timeSpend;
+
     @BeforeClass
     public static void setUp() throws Exception {
         prepareData();
@@ -38,7 +40,9 @@ public class SortTest {
             a[i] = TEST_DATA[i];
         }
 
+        startEstimate();
         Arrays.sort(a);
+        finishEstimate("ManualArrayCopy");
     }
 
     @Test
@@ -49,7 +53,9 @@ public class SortTest {
             a[i] = TEST_DATA[i];
         }
 
+        startEstimate();
         Arrays.sort(a);
+        finishEstimate("should_SortIntegers");
     }
 
     @Test
@@ -64,7 +70,17 @@ public class SortTest {
         List<Integer> al;
         al = new ArrayList<Integer>(Arrays.asList(a));
 
+        startEstimate();
         Collections.sort(al);
+        finishEstimate("should_SortArrayList");
+    }
+
+    private void startEstimate(){
+        timeSpend = System.currentTimeMillis();
+    }
+
+    private void finishEstimate(String methodName) {
+        System.out.println(String.format("Spending Time for method %s: %s", methodName,(System.currentTimeMillis() - timeSpend) / 1000d));
     }
 
 
