@@ -74,7 +74,9 @@ public class SortTest {
         Collections.sort(al);
         finishEstimate("should_SortArrayList");
     }
+    
 
+    //TODO Refactor to use only anotation @Elapsed    
     private void startEstimate(){
         timeSpend = System.currentTimeMillis();
     }
