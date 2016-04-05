@@ -1,6 +1,6 @@
 package com.splavs.elapsed;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.*;
@@ -15,25 +15,27 @@ import java.util.*;
 public class SortTest {
 
     private static final int N = 10000000;
-    private int[] test_data;
+    private static int[] TEST_DATA = new int[N];
 
-    @Before
-    public void prepareData() {
-        Random rnd = new Random();
-        test_data = new int[N];
-        for (int i = 0; i < N; i++) {
-            test_data[i] = rnd.nextInt();
-        }
-
-
+    @BeforeClass
+    public static void setUp() throws Exception {
+        prepareData();
     }
+
+    public static void prepareData() {
+        Random rnd = new Random();
+        for (int i = 0; i < N; i++) {
+            TEST_DATA[i] = rnd.nextInt();
+        }
+    }
+
     @Test
     @Elapsed
     @SuppressWarnings("ManualArrayCopy")
-    public void should_SortInts() {
+    public void testShould_SortInts() {
         int[] a = new int[N];
         for (int i = 0; i < N; i++) {
-            a[i] = test_data[i];
+            a[i] = TEST_DATA[i];
         }
 
         Arrays.sort(a);
@@ -44,7 +46,7 @@ public class SortTest {
     public void should_SortIntegers() {
         Integer[] a = new Integer[N];
         for (int i = 0; i < N; i++) {
-            a[i] = test_data[i];
+            a[i] = TEST_DATA[i];
         }
 
         Arrays.sort(a);
@@ -55,7 +57,7 @@ public class SortTest {
     public void should_SortArrayList() {
         Integer[] a = new Integer[N];
         for (int i = 0; i < N; i++) {
-            a[i] = test_data[i];
+            a[i] = TEST_DATA[i];
         }
 
 
