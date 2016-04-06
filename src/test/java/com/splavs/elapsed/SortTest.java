@@ -17,8 +17,6 @@ public class SortTest {
     private static final int N = 10000000;
     private static int[] TEST_DATA = new int[N];
 
-    private static long timeSpend;
-
     @BeforeClass
     public static void setUp() throws Exception {
         prepareData();
@@ -32,34 +30,37 @@ public class SortTest {
     }
 
     @Test
-    @Elapsed
     @SuppressWarnings("ManualArrayCopy")
-    public void testShould_SortInts() {
+    public void should_SortInts() {
         int[] a = new int[N];
         for (int i = 0; i < N; i++) {
             a[i] = TEST_DATA[i];
         }
 
-        startEstimate();
+        sortInts(a);
+    }
+
+    @Elapsed
+    private void sortInts(int[] a) {
         Arrays.sort(a);
-        finishEstimate("ManualArrayCopy");
     }
 
     @Test
-    @Elapsed
     public void should_SortIntegers() {
         Integer[] a = new Integer[N];
         for (int i = 0; i < N; i++) {
             a[i] = TEST_DATA[i];
         }
 
-        startEstimate();
+        sortIntegers(a);
+    }
+
+    @Elapsed
+    private void sortIntegers(Integer[] a) {
         Arrays.sort(a);
-        finishEstimate("should_SortIntegers");
     }
 
     @Test
-    @Elapsed
     public void should_SortArrayList() {
         Integer[] a = new Integer[N];
         for (int i = 0; i < N; i++) {
@@ -70,20 +71,12 @@ public class SortTest {
         List<Integer> al;
         al = new ArrayList<Integer>(Arrays.asList(a));
 
-        startEstimate();
+        sortArrayList(al);
+    }
+
+    @Elapsed
+    private void sortArrayList(List<Integer> al) {
         Collections.sort(al);
-        finishEstimate("should_SortArrayList");
     }
-    
-
-    //TODO Refactor to use only anotation @Elapsed    
-    private void startEstimate(){
-        timeSpend = System.currentTimeMillis();
-    }
-
-    private void finishEstimate(String methodName) {
-        System.out.println(String.format("Spending Time for method %s: %s", methodName,(System.currentTimeMillis() - timeSpend) / 1000d));
-    }
-
 
 }
