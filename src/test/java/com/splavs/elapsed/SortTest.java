@@ -4,7 +4,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.*;
-
+import static com.splavs.elapsed.TestData.*;
 /**
  * Few tests to test performance of sorts.
  *
@@ -14,19 +14,9 @@ import java.util.*;
 @Elapsed
 public class SortTest {
 
-    private static final int N = 10000000;
-    private static int[] TEST_DATA = new int[N];
-
     @BeforeClass
     public static void setUp() throws Exception {
         prepareData();
-    }
-
-    public static void prepareData() {
-        Random rnd = new Random();
-        for (int i = 0; i < N; i++) {
-            TEST_DATA[i] = rnd.nextInt();
-        }
     }
 
     @Test
@@ -66,7 +56,6 @@ public class SortTest {
         for (int i = 0; i < N; i++) {
             a[i] = TEST_DATA[i];
         }
-
 
         List<Integer> al;
         al = new ArrayList<Integer>(Arrays.asList(a));
