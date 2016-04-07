@@ -1,56 +1,56 @@
 package com.splavs.elapsed;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.List;
 
 /**
- * Add performance tests of ArrayList & LinkedList.
+ * Remove performance tests of ArrayList & LinkedList.
  *
  * @author Vyacheslav Silchenko
  */
 @Elapsed
-public class AddTests {
+public class RemoveTest {
     // Prepare test data
     private final TestData testDataInstance = TestData.INSTANCE;
 
     @Test
     @Elapsed
-    public void should_AddFirstArrayList() {
-        testDataInstance.getArrayList().add(0, 0);
+    public void should_RemoveFirstArrayList() {
+        testDataInstance.getArrayList().remove(0);
     }
 
     @Test
     @Elapsed
-    public void should_AddFirstLinkedList() {
-        testDataInstance.getLinkedList().add(0, 0);
+    public void should_RemoveFirstLinkedList() {
+        testDataInstance.getLinkedList().remove(0);
     }
 
     @Test
     @Elapsed
-    public void should_AddLastArrayList() {
+    public void should_RemoveLastArrayList() {
         final List<Integer> list = testDataInstance.getArrayList();
-        list.add(list.size(), 0);
+        list.remove(list.size()-1);
     }
 
     @Test
     @Elapsed
-    public void should_AddLastLinkedList() {
+    public void should_RemoveLastLinkedList() {
         final List<Integer> list = testDataInstance.getLinkedList();
-        list.add(list.size()-1);
+        list.remove(list.size()-1);
     }
 
     @Test
     @Elapsed
-    public void should_AddMiddleArrayList() {
+    public void should_RemoveMiddleArrayList() {
         final List<Integer> list = testDataInstance.getArrayList();
-        list.add(list.size()/2);
+        list.remove(list.size()/2);
     }
 
     @Test
     @Elapsed
-    public void should_AddMiddleLinkedList() {
+    public void should_RemoveMiddleLinkedList() {
         final List<Integer> list = testDataInstance.getLinkedList();
-        list.add(list.size()/2);
+        list.remove(list.size()/2);
     }
-
 }

@@ -9,7 +9,7 @@ import java.util.List;
  * @author Vyacheslav Silchenko
  */
 @Elapsed
-public class GetTests {
+public class GetTest {
     // Prepare test data
     private final TestData testDataInstance = TestData.INSTANCE;
 
