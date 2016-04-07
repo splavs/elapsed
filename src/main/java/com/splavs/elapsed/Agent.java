@@ -23,7 +23,6 @@ class Agent implements ClassFileTransformer {
         inst.addTransformer(new Agent());
     }
 
-    @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
         ClassPool pool = ClassPool.getDefault();
         CtClass ctClass = null;
@@ -35,9 +34,7 @@ class Agent implements ClassFileTransformer {
                     if (!method.isEmpty() && method.hasAnnotation(Elapsed.class)) {
                         method.addLocalVariable("elapsedTime", CtClass.longType);
                         method.insertBefore("elapsedTime = System.currentTimeMillis();");
-                        method.insertAfter("{elapsedTime = System.currentTimeMillis() - elapsedTime;"
-                                + "System.out.println(\"Class " + className + " Method " + method.getName() + " Executed in ms: \" + elapsedTime);}");
-
+                        method.insertAfter(String.format("{elapsedTime = System.currentTimeMillis() - elapsedTime; System.out.println(\"Class %s Method %s Executed in ms: \" + elapsedTime);}", className, method.getName()));
                     }
                 }
             }
