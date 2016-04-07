@@ -1,6 +1,5 @@
 package com.splavs.elapsed;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.*;
 
@@ -11,35 +10,31 @@ import java.util.*;
  */
 @Elapsed
 public class SortTest {
-
-    @BeforeClass
-    public static void setUp() throws Exception {
-        TestData.INSTANCE.prepareData();
-        System.out.println();
-    }
+    // Prepare test data
+    private final TestData testDataInstance = TestData.INSTANCE;
 
     @Test
     @Elapsed
     public void should_SortIntsArray() {
-        Arrays.sort(TestData.INSTANCE.getTestData());
+        Arrays.sort(testDataInstance.getTestData());
     }
 
     @Test
     @Elapsed
     public void should_SortIntegersArray() {
-        Arrays.sort(TestData.INSTANCE.getTestDataInteger());
+        Arrays.sort(testDataInstance.getTestDataInteger());
     }
 
     @Test
     @Elapsed
     public void should_SortArrayList() {
-        Collections.sort(TestData.INSTANCE.getArrayList());
+        Collections.sort(testDataInstance.getArrayList());
     }
 
     @Test
     @Elapsed
     public void should_SortLinkedList() {
-        Collections.sort(TestData.INSTANCE.getLinkedList());
+        Collections.sort(testDataInstance.getLinkedList());
     }
 
 }

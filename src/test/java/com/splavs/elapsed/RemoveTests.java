@@ -11,50 +11,46 @@ import java.util.List;
  */
 @Elapsed
 public class RemoveTests {
-
-    @BeforeClass
-    public static void setUp() {
-        TestData.INSTANCE.prepareData();
-        System.out.println();
-    }
+    // Prepare test data
+    private final TestData testDataInstance = TestData.INSTANCE;
 
     @Test
     @Elapsed
     public void should_RemoveFirstArrayList() {
-        TestData.INSTANCE.getArrayList().remove(0);
+        testDataInstance.getArrayList().remove(0);
     }
 
     @Test
     @Elapsed
     public void should_RemoveFirstLinkedList() {
-        TestData.INSTANCE.getLinkedList().remove(0);
+        testDataInstance.getLinkedList().remove(0);
     }
 
     @Test
     @Elapsed
     public void should_RemoveLastArrayList() {
-        final List<Integer> list = TestData.INSTANCE.getArrayList();
+        final List<Integer> list = testDataInstance.getArrayList();
         list.remove(list.size()-1);
     }
 
     @Test
     @Elapsed
     public void should_RemoveLastLinkedList() {
-        final List<Integer> list = TestData.INSTANCE.getLinkedList();
+        final List<Integer> list = testDataInstance.getLinkedList();
         list.remove(list.size()-1);
     }
 
     @Test
     @Elapsed
     public void should_RemoveMiddleArrayList() {
-        final List<Integer> list = TestData.INSTANCE.getArrayList();
+        final List<Integer> list = testDataInstance.getArrayList();
         list.remove(list.size()/2);
     }
 
     @Test
     @Elapsed
     public void should_RemoveMiddleLinkedList() {
-        final List<Integer> list = TestData.INSTANCE.getLinkedList();
+        final List<Integer> list = testDataInstance.getLinkedList();
         list.remove(list.size()/2);
     }
 }

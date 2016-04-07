@@ -1,6 +1,5 @@
 package com.splavs.elapsed;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.List;
 
@@ -11,50 +10,46 @@ import java.util.List;
  */
 @Elapsed
 public class GetTests {
-
-    @BeforeClass
-    public static void setUp() throws Exception {
-        TestData.INSTANCE.prepareData();
-        System.out.println();
-    }
+    // Prepare test data
+    private final TestData testDataInstance = TestData.INSTANCE;
 
     @Test
     @Elapsed
     public void should_GetFirstArrayList() {
-        TestData.INSTANCE.getArrayList().get(0);
+        testDataInstance.getArrayList().get(0);
     }
 
     @Test
     @Elapsed
     public void should_GetFirstLinkedList() {
-        TestData.INSTANCE.getLinkedList().get(0);
+        testDataInstance.getLinkedList().get(0);
     }
 
     @Test
     @Elapsed
     public void should_GetLastArrayList() {
-        final List<Integer> list = TestData.INSTANCE.getArrayList();
+        final List<Integer> list = testDataInstance.getArrayList();
         list.get(list.size()-1);
     }
 
     @Test
     @Elapsed
     public void should_GetLastLinkedList() {
-        final List<Integer> list = TestData.INSTANCE.getLinkedList();
+        final List<Integer> list = testDataInstance.getLinkedList();
         list.get(list.size()-1);
     }
 
     @Test
     @Elapsed
     public void should_GetMiddleArrayList() {
-        final List<Integer> list = TestData.INSTANCE.getArrayList();
+        final List<Integer> list = testDataInstance.getArrayList();
         list.get(list.size()/2);
     }
 
     @Test
     @Elapsed
     public void should_GetMiddleLinkedList() {
-        final List<Integer> list = TestData.INSTANCE.getLinkedList();
+        final List<Integer> list = testDataInstance.getLinkedList();
         list.get(list.size()/2);
     }
 }

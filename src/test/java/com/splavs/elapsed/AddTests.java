@@ -1,6 +1,5 @@
 package com.splavs.elapsed;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.List;
 
@@ -11,50 +10,46 @@ import java.util.List;
  */
 @Elapsed
 public class AddTests {
-
-    @BeforeClass
-    public static void setUp() throws Exception {
-        TestData.INSTANCE.prepareData();
-        System.out.println();
-    }
+    // Prepare test data
+    private final TestData testDataInstance = TestData.INSTANCE;
 
     @Test
     @Elapsed
     public void should_AddFirstArrayList() {
-        TestData.INSTANCE.getArrayList().add(0, 0);
+        testDataInstance.getArrayList().add(0, 0);
     }
 
     @Test
     @Elapsed
     public void should_AddFirstLinkedList() {
-        TestData.INSTANCE.getLinkedList().add(0, 0);
+        testDataInstance.getLinkedList().add(0, 0);
     }
 
     @Test
     @Elapsed
     public void should_AddLastArrayList() {
-        final List<Integer> list = TestData.INSTANCE.getArrayList();
+        final List<Integer> list = testDataInstance.getArrayList();
         list.add(list.size(), 0);
     }
 
     @Test
     @Elapsed
     public void should_AddLastLinkedList() {
-        final List<Integer> list = TestData.INSTANCE.getLinkedList();
+        final List<Integer> list = testDataInstance.getLinkedList();
         list.add(list.size()-1);
     }
 
     @Test
     @Elapsed
     public void should_AddMiddleArrayList() {
-        final List<Integer> list = TestData.INSTANCE.getArrayList();
+        final List<Integer> list = testDataInstance.getArrayList();
         list.add(list.size()/2);
     }
 
     @Test
     @Elapsed
     public void should_AddMiddleLinkedList() {
-        final List<Integer> list = TestData.INSTANCE.getLinkedList();
+        final List<Integer> list = testDataInstance.getLinkedList();
         list.add(list.size()/2);
     }
 

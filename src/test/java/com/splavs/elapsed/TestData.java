@@ -18,7 +18,7 @@ public enum TestData {
     private List<Integer> arrayList;
     private List<Integer> linkedList;
 
-    public void prepareData() {
+    TestData() {
         prepareTestDataArrayInt();
         prepareTestDataArrayInteger();
         prepareArrayList();
