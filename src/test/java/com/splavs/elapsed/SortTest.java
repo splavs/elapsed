@@ -39,7 +39,7 @@ public class SortTest {
     @Test
     @Elapsed
     public void should_SortLinkedList() {
-        Collections.sort(TestData.INSTANCE.getArrayList());
+        Collections.sort(TestData.INSTANCE.getLinkedList());
     }
 
 }

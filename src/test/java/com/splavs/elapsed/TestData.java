@@ -11,8 +11,10 @@ public enum TestData {
     INSTANCE;
 
     private final int N = 10000000;
-    private final int[] testData = new int[N];
-    private final Integer[] testDataInteger = new Integer[N];
+
+    private int[] testData;
+    private Integer[] testDataInteger;
+
     private List<Integer> arrayList;
     private List<Integer> linkedList;
 
@@ -42,6 +44,7 @@ public enum TestData {
 
     @Elapsed
     private void prepareTestDataArrayInt() {
+        testData = new int[N];
         Random rnd = new Random();
         for (int i = 0; i < N; i++) {
             testData[i] = rnd.nextInt();
@@ -50,6 +53,7 @@ public enum TestData {
 
     @Elapsed
     private void prepareTestDataArrayInteger() {
+        testDataInteger = new Integer[N];
         for (int i = 0; i < N; i++) {
             testDataInteger[i] = testData[i];
         }
@@ -57,14 +61,18 @@ public enum TestData {
 
     @Elapsed
     private void prepareArrayList() {
-        Integer[] a = getTestDataInteger();
-        arrayList = new ArrayList<Integer>(Arrays.asList(a));
+        arrayList = new ArrayList<Integer>(N);
+        for (int i : testData) {
+            arrayList.add(i);
+        }
     }
 
     @Elapsed
     private void prepareLinkedList() {
-        Integer[] a = getTestDataInteger();
-        linkedList = new LinkedList<Integer>(Arrays.asList(a));
+        linkedList= new LinkedList<Integer>();
+        for (int i : testData) {
+            linkedList.add(i);
+        }
     }
 
 
