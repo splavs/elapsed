@@ -10,9 +10,14 @@ import java.util.*;
 public enum TestData {
     INSTANCE;
 
-    private final int N = 10000000;
+    public static final int TEST_RUNS = 10;
+    //private final int N = 10000000; //100millions
+    private final int N = 100000000; //100millions
 
+    @MemoryUsage
     private int[] testData;
+
+    @MemoryUsage
     private Integer[] testDataInteger;
 
     private List<Integer> arrayList;
@@ -20,8 +25,8 @@ public enum TestData {
 
     TestData() {
         prepareTestDataArrayInt();
-        prepareTestDataArrayInteger();
-        prepareArrayList();
+        //prepareTestDataArrayInteger();
+        //prepareArrayList();
         prepareLinkedList();
 
     }

@@ -2,6 +2,10 @@ package com.splavs.elapsed;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -10,9 +14,15 @@ import java.util.List;
  * @author Vyacheslav Silchenko
  */
 @Elapsed
+@RunWith(Parameterized.class)
 public class RemoveTest {
     // Prepare test data
     private final TestData testDataInstance = TestData.INSTANCE;
+
+    @Parameterized.Parameters
+    public static List<Object[]> data() {
+        return Arrays.asList(new Object[TestData.TEST_RUNS][0]);
+    }
 
     @Test
     @Elapsed
