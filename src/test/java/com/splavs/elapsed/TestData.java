@@ -12,7 +12,7 @@ public enum TestData {
 
     public static final int TEST_RUNS = 10;
     //private final int N = 10000000; //100millions
-    private final int N = 100000000; //100millions
+    private final int N = 1000000; //100millions
 
     @MemoryUsage
     private int[] testData;
@@ -25,8 +25,8 @@ public enum TestData {
 
     TestData() {
         prepareTestDataArrayInt();
-        //prepareTestDataArrayInteger();
-        //prepareArrayList();
+        prepareTestDataArrayInteger();
+        prepareArrayList();
         prepareLinkedList();
 
     }

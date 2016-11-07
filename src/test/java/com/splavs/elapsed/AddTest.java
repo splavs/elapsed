@@ -46,21 +46,21 @@ public class AddTest {
     @Elapsed
     public void should_AddLastLinkedList() {
         final List<Integer> list = testDataInstance.getLinkedList();
-        list.add(list.size()-1);
+        list.add(list.size(), 0);
     }
 
     @Test
     @Elapsed
     public void should_AddMiddleArrayList() {
         final List<Integer> list = testDataInstance.getArrayList();
-        list.add(list.size()/2);
+        list.add(list.size()/2, 0);
     }
 
     @Test
     @Elapsed
     public void should_AddMiddleLinkedList() {
         final List<Integer> list = testDataInstance.getLinkedList();
-        list.add(list.size()/2);
+        list.add(list.size()/2, 0);
     }
 
 }
